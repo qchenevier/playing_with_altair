@@ -266,4 +266,4 @@ alt.Chart(
 ).repeat(
     row=column_to_plot
 )
-# Nice ! education_num is really helping !
+# Nice ! we can compare all the variables !
