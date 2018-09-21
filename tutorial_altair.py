@@ -7,8 +7,7 @@ import altair as alt
 from io import BytesIO
 
 #%% Configure viz library
-# alt.data_transformers.enable('csv') # to be able to plot more than 1000 rows
-alt.data_transformers.enable('default')
+alt.data_transformers.enable('csv') # to be able to plot more than 1000 rows
 alt.theme.themes.enable('opaque')
 
 #%% Load data
@@ -30,23 +29,12 @@ df = (
 df.head().T
 
 #%%
-import IPython.display
-def vegify(spec):
-    IPython.display.display({
-        'application/vnd.vegalite.v2+json': spec.to_dict()
-    }, raw=True)
-#%%
-alt.themes.enable('opaque')
-
-#%%
-vegify(
-    alt.Chart(df.sample(4000), width=500, height=500).mark_circle().encode(
-        x='capital_variation',
-        y='education_num',
-        color='income',
-        tooltip=['capital_variation']
-    ).interactive()
-)
+alt.Chart(df.sample(4000), width=500, height=500).mark_circle().encode(
+    x='capital_variation',
+    y='education_num',
+    color='income',
+    tooltip=['capital_variation']
+).interactive()
 
 #%%
 alt.Chart(df.sample(4000), width=500, height=500).mark_circle().encode(
